@@ -16,7 +16,10 @@ public:
 
 Vector operator-(Point a, Point b) 
 {
-	
+	Vector v;
+	v.x = a.x - b.x;
+	v.y = a.y - b.y;
+	return v;
 }
 
 Point Point::AddVector(Vector v) 
@@ -29,16 +32,22 @@ Point Point::AddVector(Vector v)
 
 int main(int argc, char** args) {
 	Point p;
-	p.x = 1;
-	p.y = 0;
+	p.x = 0;
+	p.y = -1;
+
+	Point i;
+	i.x = 1;
+	i.y = 1;
 
 	Vector v;
-	v.x = 2;
-	v.y = 3;
+
+	v = p - i;
 
 	Point p2 = p.AddVector(v);
 
-	std::cout << "Result: (" << p2.x << ", " << p2.y << ")\n";
+	std::cout << "Pacman's location: (" << p.x << ", " << p.y << ")\n";
+	std::cout << "Inky's location: (" << i.x << ", " << i.y << ")\n";
+	std::cout << "Vector for inky to move to pacman: (" << v.x << ", " << v.y << ")\n";
 
 	return 0;
 }
